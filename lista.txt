@@ -1,0 +1,21 @@
+Nombre Apellido, Materia, nota 1, nota 2, nota 3, nota 4, nota 5
+Jean Andrade, Programación, 22, 35, 75, 99, 100
+John Doe, Programación, 11, 22, 33, 44, 55
+Jane Doe, Arte, 11, 22, 33, 44, 55
+Maria García, Arte, 45, 67, 89, 78, 90
+Carlos Rodríguez, Arte, 55, 66, 77, 88, 99
+Laura Hernandez, Arte, 30, 40, 50, 60, 70
+David Smith, Arte, 80, 85, 90, 95, 100
+Ana Martinez, Arte, 70, 75, 80, 85, 90
+Juan Torres, Comunicación, 60, 65, 70, 75, 80
+Sofia Ramirez, Comunicación, 90, 85, 80, 75, 70
+Miguel Lopez, Comunicación, 50, 55, 60, 65, 70
+Alejandra Fernández, Comunicación, 95, 80, 65, 50, 35
+Pedro Ruiz, Sociología, 75, 80, 85, 90, 95
+Carolina Silva, Arte, 45, 50, 55, 60, 65
+Luis Morales, Comunicación, 30, 40, 50, 60, 70
+Gabriela Navarro, Comunicación, 90, 85, 80, 75, 70
+Oscar Vargas, Comunicación, 70, 75, 80, 85, 90
+Mariana Guzmán, Arte, 60, 65, 70, 75, 80
+Andrés Castro, Arte, 50, 55, 60, 65, 70
+Valentina Paredes, Comunicación, 90, 95, 100, 95, 90
