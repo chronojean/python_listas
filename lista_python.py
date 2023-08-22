@@ -163,8 +163,30 @@ while (opcion != "0"):
         print(f"Promedio General: {sum(promedios)/len(promedios)} ")
         input("\t")
     elif opcion == "8":
-        None
+        clear_cls()
+        print("\tNota máxima\n")
+        max = float("-inf")
+        for i in range(len(estudiantes)):
+            for j in range(2, len(estudiantes[i])-1):
+                if estudiantes[i][j] > max:
+                    max = estudiantes[i][j]
+        for i in range(len(estudiantes)):
+            if max in estudiantes[i][:7]:
+                print(
+                    f" {estudiantes[i][0]} - Nota {estudiantes[i].index(max)}: {max} - {estudiantes[i][1]}")
+        input()
     elif opcion == "9":
-        None
+        clear_cls()
+        print("\tNota mínima\n")
+        min = float("inf")
+        for i in range(len(estudiantes)):
+            for j in range(2, len(estudiantes[i])-1):
+                if estudiantes[i][j] < min:
+                    min = estudiantes[i][j]
+        for i in range(len(estudiantes)):
+            if min in estudiantes[i][:7]:
+                print(
+                    f" {estudiantes[i][0]} - Nota {estudiantes[i].index(min)}: {min} - {estudiantes[i][1]}")
+        input()
     else:
         clear_cls()

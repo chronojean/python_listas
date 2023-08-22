@@ -4,7 +4,7 @@ John Doe, Programaci�n, 11, 22, 33, 44, 55
 Jane Doe, Arte, 11, 22, 33, 44, 55
 Maria Garc�a, Arte, 45, 67, 89, 78, 90
 Carlos Rodr�guez, Arte, 55, 66, 77, 88, 99
-Laura Hernandez, Arte, 30, 40, 50, 60, 70
+Laura Hernandez, Arte, 99, 99, 99, 99, 99
 David Smith, Arte, 80, 85, 90, 95, 100
 Ana Martinez, Arte, 70, 75, 80, 85, 90
 Juan Torres, Comunicaci�n, 60, 65, 70, 75, 80
