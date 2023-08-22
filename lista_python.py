@@ -2,17 +2,12 @@ import os  # Importa el módulo 'os' para acceder a funcionalidades del sistema 
 import sys  # Importa el módulo 'sys' para acceder a funcionalidades específicas del intérprete
 import platform
 
-try:
-    # Intenta abrir el archivo "lista.txt" en modo lectura
-    with open("./lista.txt") as my_file:
-        f = my_file.read()  # Lee el contenido del archivo y almacénalo en la variable 'f'
-except:
-    # Si ocurre una excepción (el archivo no existe o no se puede leer)
-    print("No existe el archivo.")
-    sys.exit(0)  # Imprime un mensaje y finaliza el programa
-
 dicc = {"sobresalientes": "Estudiantes Sobresalientes",
-        "aprobados": "Estudiantes Aprobados", "reprobados": "Estudiantes reprobados", "nota_sobresaliente": 90, "nota_aprobado": 75}
+        "aprobados": "Estudiantes Aprobados",
+        "reprobados": "Estudiantes reprobados",
+        "nota_sobresaliente": 90,
+        "nota_aprobado": 75
+        }
 
 
 def listado_general(clave_listado, estudiantes):
@@ -47,6 +42,16 @@ def clear_cls():
         os.system('clear')
     else:
         print("No se pudo determinar el sistema operativo")
+
+
+try:
+    # Intenta abrir el archivo "lista.txt" en modo lectura
+    with open("./lista.txt") as my_file:
+        f = my_file.read()  # Lee el contenido del archivo y almacénalo en la variable 'f'
+except:
+    # Si ocurre una excepción (el archivo no existe o no se puede leer)
+    print("No existe el archivo.")
+    sys.exit(0)  # Imprime un mensaje y finaliza el programa
 
 
 # Divide el contenido del archivo en líneas y almacénalas en una lista llamada 'lista'
