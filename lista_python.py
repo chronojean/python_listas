@@ -100,7 +100,7 @@ while (opcion != "0"):
         \n7.Promedio General\
         \n8.Nota máxima\
         \n9.Nota mínima\
-        \n0.Salir del Sistema\n\
+        \n\n0.Salir del Sistema\n\
         \n\tEscoja una opción: """)
     if opcion == "1":
         listado("sobresalientes", estudiantes)
@@ -142,9 +142,7 @@ while (opcion != "0"):
                             listado("reprobados", estudiantes_materia,
                                     f" {dicc['reprobados']} de {materias[int(opcion_materia)-1]}\n")
             except:
-                print("error")
                 opcion_materia = ""
-                input()
     elif opcion == "6":
         clear_cls()
         print("\tPromedio por Materia\n")
