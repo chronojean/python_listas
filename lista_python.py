@@ -6,7 +6,8 @@ dicc = {"sobresalientes": "Estudiantes Sobresalientes",
         "aprobados": "Estudiantes Aprobados",
         "reprobados": "Estudiantes reprobados",
         "nota_sobresaliente": 90,
-        "nota_aprobado": 75
+        "nota_aprobado": 75,
+        "promedio": "Promedio de Estudiantes"
         }
 
 
@@ -34,7 +35,10 @@ def listado(clave_listado, estudiantes, titulo=""):
     if titulo != "":
         print("\t"+titulo)
     for x in estudiantes:
-        if not clave_listado == "reprobados":
+        if clave_listado == "promedio":
+            contador += 1
+            print(str(contador)+".", x[0], x[1], x[len(x)-1])
+        elif not clave_listado == "reprobados":
             if (x[7] >= nota):
                 contador += 1
                 print(str(contador)+".", x[0], x[1], x[len(x)-1])
@@ -82,6 +86,7 @@ for x in lista:
 estudiantes.sort()
 materias = list(set([x[1] for x in estudiantes]))
 materias.sort()
+
 opcion = ""
 while (opcion != "0"):
     clear_cls()
@@ -89,7 +94,12 @@ while (opcion != "0"):
         \n1.{dicc['sobresalientes']}\
         \n2.{dicc['aprobados']}\
         \n3.{dicc['reprobados']}\
-        \n4.Listados por Materia
+        \n4.{dicc['promedio']}\
+        \n5.Listados por Materia\
+        \n6.Promedio Por Materia\
+        \n7.Promedio General\
+        \n8.Nota máxima\
+        \n9.Nota mínima\
         \n0.Salir del Sistema\n\
         \n\tEscoja una opción: """)
     if opcion == "1":
@@ -99,6 +109,8 @@ while (opcion != "0"):
     elif opcion == "3":
         listado("reprobados", estudiantes)
     elif opcion == "4":
+        listado("promedio", estudiantes)
+    elif opcion == "5":
         opcion_materia = ""
         while (opcion_materia != "0"):
             clear_cls()
@@ -133,12 +145,23 @@ while (opcion != "0"):
                 print("error")
                 opcion_materia = ""
                 input()
-    elif opcion == "5":
-        None
     elif opcion == "6":
-        None
+        clear_cls()
+        print("\tPromedio por Materia\n")
+        buff_materias = materias[0:]
+        for i in range(len(buff_materias)):
+            notas_materia = [int(x[7])
+                             for x in estudiantes if x[1] == buff_materias[i]]
+            promedio_materia = int(sum(notas_materia) / len(notas_materia))
+            buff_materias[i] = [buff_materias[i], promedio_materia]
+        for x in range(len(buff_materias)):
+            print(str(x+1)+".", buff_materias[x][0], buff_materias[x][1])
+        input("\t")
     elif opcion == "7":
-        None
+        clear_cls()
+        promedios = [int(x[7]) for x in estudiantes]
+        print(f"Promedio General: {sum(promedios)/len(promedios)} ")
+        input("\t")
     elif opcion == "8":
         None
     elif opcion == "9":
