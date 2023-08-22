@@ -27,10 +27,12 @@ def clear_cls():
         print("No se pudo determinar el sistema operativo")
 
 
-def listado(clave_listado, estudiantes):
+def listado(clave_listado, estudiantes, titulo=""):
     clear_cls()
     contador = 0
     nota = dicc["nota_sobresaliente"] if clave_listado == "sobresalientes" else dicc["nota_aprobado"]
+    if titulo != "":
+        print("\t"+titulo)
     for x in estudiantes:
         if not clave_listado == "reprobados":
             if (x[7] >= nota):
@@ -108,6 +110,8 @@ while (opcion != "0"):
                 clear_cls()
                 if int(opcion_materia)-1 < len(materias) and not int(opcion_materia)-1 < 0:
                     opcion_materia_clave_listado = ""
+                    estudiantes_materia = list(
+                        filter(lambda x: x[1] == materias[int(opcion_materia)-1], estudiantes))
                     while (opcion_materia_clave_listado != "0"):
                         clear_cls()
                         opcion_materia_clave_listado = input(f"""\tListados de estudiantes de {materias[int(opcion_materia)-1]} \n\
@@ -116,6 +120,15 @@ while (opcion != "0"):
                                                             \n3.{dicc['reprobados']}\n\
                                                             \n0.Volver al Menú anterior\n\
                                                             \n\tEscoja una opción: """)
+                        if (opcion_materia_clave_listado == "1"):
+                            listado("sobresalientes", estudiantes_materia,
+                                    f" {dicc['sobresalientes']} en {materias[int(opcion_materia)-1]}\n")
+                        elif (opcion_materia_clave_listado == "2"):
+                            listado("aprobados", estudiantes_materia,
+                                    f" {dicc['aprobados']} en {materias[int(opcion_materia)-1]}\n")
+                        elif (opcion_materia_clave_listado == "3"):
+                            listado("reprobados", estudiantes_materia,
+                                    f" {dicc['reprobados']} de {materias[int(opcion_materia)-1]}\n")
             except:
                 print("error")
                 opcion_materia = ""
