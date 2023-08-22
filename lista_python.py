@@ -10,7 +10,24 @@ dicc = {"sobresalientes": "Estudiantes Sobresalientes",
         }
 
 
-def listado_general(clave_listado, estudiantes):
+def imprime_materias(materias):
+    for x in range(len(materias)):
+        print(f"{x+1}. {materias[x]}")
+
+
+def clear_cls():
+    # Obtiene el nombre del sistema operativo
+    sistema_operativo = platform.system()
+
+    if sistema_operativo == "Windows":
+        os.system('cls')
+    elif sistema_operativo == "Linux":
+        os.system('clear')
+    else:
+        print("No se pudo determinar el sistema operativo")
+
+
+def listado(clave_listado, estudiantes):
     clear_cls()
     contador = 0
     nota = dicc["nota_sobresaliente"] if clave_listado == "sobresalientes" else dicc["nota_aprobado"]
@@ -25,23 +42,6 @@ def listado_general(clave_listado, estudiantes):
                 print(str(contador)+".", x[0], x[1], x[len(x)-1])
     input(f"\n\tSe han encontrado {contador} {dicc[clave_listado]}.")
     print(f"\n{dicc[''+clave_listado]}:\n")
-
-
-def imprime(elemento):
-    for x in elemento:
-        print(x)
-
-
-def clear_cls():
-    # Obtiene el nombre del sistema operativo
-    sistema_operativo = platform.system()
-
-    if sistema_operativo == "Windows":
-        os.system('cls')
-    elif sistema_operativo == "Linux":
-        os.system('clear')
-    else:
-        print("No se pudo determinar el sistema operativo")
 
 
 try:
@@ -74,20 +74,52 @@ for x in lista:
         promedio = sum(notas)/len(notas)
         estudiante_data.append(promedio)
         estudiantes.append(estudiante_data)
-
+# Ordena a los estudiantes de acuerdo a su promedio (de mayor a menor: reverse=True)
+# estudiantes = sorted(estudiantes, key=lambda x: x[7], reverse=True)
+# Ordena a los estudiantes usando la primera columna x[0]
+estudiantes.sort()
+materias = list(set([x[1] for x in estudiantes]))
+materias.sort()
 opcion = ""
 while (opcion != "0"):
     clear_cls()
-    opcion = input(
-        f"\n1.{dicc['sobresalientes']}\n2.{dicc['aprobados']}\n3.{dicc['reprobados']}\n\n0.Salir del Sistema\n\n\tEscoja una opción: ")
+    opcion = input(f"""\tListados de estudiantes\n\
+        \n1.{dicc['sobresalientes']}\
+        \n2.{dicc['aprobados']}\
+        \n3.{dicc['reprobados']}\
+        \n4.Listados por Materia
+        \n0.Salir del Sistema\n\
+        \n\tEscoja una opción: """)
     if opcion == "1":
-        listado_general("sobresalientes", estudiantes)
+        listado("sobresalientes", estudiantes)
     elif opcion == "2":
-        listado_general("aprobados", estudiantes)
+        listado("aprobados", estudiantes)
     elif opcion == "3":
-        listado_general("reprobados", estudiantes)
+        listado("reprobados", estudiantes)
     elif opcion == "4":
-        None
+        opcion_materia = ""
+        while (opcion_materia != "0"):
+            clear_cls()
+            print("\tListados de estudiantes por Materia\n")
+            imprime_materias(materias)
+            opcion_materia = input(
+                "\n0. Volver al Menú Anterior.\n\n\tEscoja una opción: ")
+            try:
+                clear_cls()
+                if int(opcion_materia)-1 < len(materias) and not int(opcion_materia)-1 < 0:
+                    opcion_materia_clave_listado = ""
+                    while (opcion_materia_clave_listado != "0"):
+                        clear_cls()
+                        opcion_materia_clave_listado = input(f"""\tListados de estudiantes de {materias[int(opcion_materia)-1]} \n\
+                                                            \n1.{dicc['sobresalientes']}\
+                                                            \n2.{dicc['aprobados']}\
+                                                            \n3.{dicc['reprobados']}\n\
+                                                            \n0.Volver al Menú anterior\n\
+                                                            \n\tEscoja una opción: """)
+            except:
+                print("error")
+                opcion_materia = ""
+                input()
     elif opcion == "5":
         None
     elif opcion == "6":
@@ -99,4 +131,4 @@ while (opcion != "0"):
     elif opcion == "9":
         None
     else:
-        None
+        clear_cls()
